@@ -9,6 +9,10 @@
     <custom-button>
       <router-link to="/posts">Posts</router-link>
     </custom-button>
+
+    <custom-button>
+      <router-link to="/posts-store">Posts (Store)</router-link>
+    </custom-button>
   </div>
 </template>
 

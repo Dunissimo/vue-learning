@@ -2,7 +2,7 @@
   <form @submit.prevent>
     <h2>Создать пост</h2>
 
-    <custom-input v-model="post.title" type="text" name="title" id="title" placeholder="Название"/>
+    <custom-input v-focus v-model="post.title" type="text" name="title" id="title" placeholder="Название"/>
     <custom-input v-model="post.body" type="text" name="body" id="body" placeholder="Описание"/>
 
     <custom-button style="margin-top: 15px;" @click="createPost">Создать</custom-button>

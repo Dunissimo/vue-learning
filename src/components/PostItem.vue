@@ -1,7 +1,9 @@
 <template>
   <div class="post">
     <div>
-      <h2><strong>Название:</strong> {{ post.title }}</h2>
+      <h2 @click="$router.push(`/posts/${post.id}`)">
+          <strong>Название:</strong> {{ post.title }}
+      </h2>
       <p><strong>Описание:</strong> {{ post.body }}</p>
     </div>
 
@@ -32,5 +34,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.post h2 {
+  cursor: pointer;
+  text-decoration: underline;
 }
 </style>

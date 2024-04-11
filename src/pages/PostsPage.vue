@@ -1,6 +1,5 @@
 <template>
   <div>
-    <navbar />
     <modal v-model:show="show">
       <post-form @create="createPost" />
     </modal>
@@ -21,7 +20,12 @@
       <div v-else style="text-align: center; margin-top: 20px; font-size: 32px; font-weight: 700">Загрузка...</div>
     </div>
 
-    <div ref="observer" class="observer"></div>
+    <div
+        ref="observer"
+        class="observer"
+        v-if="selectedType === 'intersection'"
+        v-intersection="{func: loadMorePosts, page, totalPages}"
+    ></div>
 
     <pagination v-if="selectedType === 'pagination'" @setPage="setPage" :total-pages="totalPages" :page="page"/>
   </div>
@@ -87,25 +91,13 @@ export default {
       }
     },
     selectedType() {
-      if (this.selectedType === 'intersection') {
-        const options = {
-          rootMargin: "0px",
-          threshold: 1.0,
-        };
-
-        const callback = (entries, observer) => {
-          console.log('obs')
-          if (entries[0].isIntersecting && this.page < this.totalPages) {
-            this.loadMorePosts();
-          }
-        }
-
-        console.log(this.$refs)
-
-        const observer = new IntersectionObserver(callback, options);
-
-        observer.observe(this.$refs.observer);
+      if (this.selectedType === 'pagination') {
+        this.page = 1;
+        this.posts = [];
+        this.fetchPosts();
       }
+
+      return this.selectedType;
     }
   },
   methods: {
@@ -124,7 +116,6 @@ export default {
     },
 
     async fetchPosts() {
-      console.log('fe')
       try {
         this.isLoading = true;
 
