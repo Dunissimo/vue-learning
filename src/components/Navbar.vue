@@ -13,6 +13,10 @@
     <custom-button>
       <router-link to="/posts-store">Posts (Store)</router-link>
     </custom-button>
+
+    <custom-button>
+      <router-link to="/posts-comp">Posts (Composition)</router-link>
+    </custom-button>
   </div>
 </template>
 
