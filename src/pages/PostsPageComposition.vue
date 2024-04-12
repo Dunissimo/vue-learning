@@ -36,7 +36,6 @@ import CustomSelect from "@/components/UI/CustomSelect.vue";
 import CustomInput from "@/components/UI/CustomInput.vue";
 import Pagination from "@/components/UI/Pagination.vue";
 import Navbar from "@/components/Navbar.vue";
-import {ref} from "vue";
 import CustomButton from "@/components/UI/CustomButton.vue";
 import {usePosts} from "@/hooks/usePosts";
 import {useSortedPosts} from "@/hooks/useSortedPosts";
@@ -65,7 +64,7 @@ export default {
       ],
     }
   },
-  setup(props) {
+  setup() {
     const {posts, isLoading, totalPages} = usePosts(10);
     const {selectedSort, sortedPosts} = useSortedPosts(posts);
     const {searchByTitle, sortedAndFilteredPosts} = useSortedAndFilteredPosts(sortedPosts);

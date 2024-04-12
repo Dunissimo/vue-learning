@@ -1,5 +1,5 @@
 import axios from "axios";
-import {onMounted, ref, watch} from "vue";
+import {onMounted, ref} from "vue";
 
 export const usePosts = (limit) => {
     const posts = ref([]);
